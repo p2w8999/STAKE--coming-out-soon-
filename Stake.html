@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STAKE - Online Casino</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1 class="logo">STAKE</h1>
+                <nav class="nav">
+                    <button class="nav-btn active" data-page="home">Home</button>
+                    <button class="nav-btn" data-page="games">Games</button>
+                    <button class="nav-btn" data-page="mines">Mines</button>
+                    <button class="nav-btn" data-page="blackjack">Blackjack</button>
+                    <button class="nav-btn" data-page="slots">Slots</button>
+                    <button class="nav-btn" data-page="coinflip">Coin Flip</button>
+                    <button class="nav-btn" data-page="roulette">Roulette</button>
+                    <button class="nav-btn" data-page="admin">Admin</button>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="balance-display" id="balanceDisplay">
+                    <span class="balance-label">Balance:</span>
+                    <span class="balance-amount" id="balanceAmount">$0.00</span>
+                </div>
+                <div class="user-section" id="userSection"></div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Home Page -->
+            <div id="homePage" class="page active">
+                <div class="hero">
+                    <h2>Welcome to STAKE</h2>
+                    <p>The ultimate fake gambling experience!</p>
+                    <div class="feature-cards">
+                        <div class="feature-card">
+                            <h3>Mines</h3>
+                            <p>Click tiles and avoid mines!</p>
+                            <button class="btn-primary" data-page="mines">Play Now</button>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Blackjack</h3>
+                            <p>Beat the dealer!</p>
+                            <button class="btn-primary" data-page="blackjack">Play Now</button>
+                        </div>
+                        <div class="feature-card">
+                            <h3>Slots</h3>
+                            <p>Spin and win big!</p>
+                            <button class="btn-primary" data-page="slots">Play Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login/Register Page -->
+            <div id="authPage" class="page">
+                <div class="auth-container">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Login</button>
+                        <button class="auth-tab" data-tab="register">Register</button>
+                    </div>
+                    <div id="loginForm" class="auth-form">
+                        <h2>Login</h2>
+                        <input type="text" id="loginUsername" placeholder="Username">
+                        <input type="password" id="loginPassword" placeholder="Password">
+                        <button class="btn-primary" id="loginBtn">Login</button>
+                    </div>
+                    <div id="registerForm" class="auth-form hidden">
+                        <h2>Create Account</h2>
+                        <input type="text" id="regUsername" placeholder="Username">
+                        <input type="email" id="regEmail" placeholder="Email">
+                        <input type="password" id="regPassword" placeholder="Password">
+                        <button class="btn-primary" id="registerBtn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Games Page -->
+            <div id="gamesPage" class="page">
+                <div class="games-grid">
+                    <div class="game-card" data-game="mines">
+                        <div class="game-icon">💣</div>
+                        <h3>Mines</h3>
+                        <button class="btn-primary" data-page="mines">Play</button>
+                    </div>
+                    <div class="game-card" data-game="blackjack">
+                        <div class="game-icon">♠️</div>
+                        <h3>Blackjack</h3>
+                        <button class="btn-primary" data-page="blackjack">Play</button>
+                    </div>
+                    <div class="game-card" data-game="slots">
+                        <div class="game-icon">🎰</div>
+                        <h3>Slots</h3>
+                        <button class="btn-primary" data-page="slots">Play</button>
+                    </div>
+                    <div class="game-card" data-game="dice">
+                        <div class="game-icon">🎲</div>
+                        <h3>Dice</h3>
+                        <button class="btn-primary" data-page="dice">Play</button>
+                    </div>
+                    <div class="game-card" data-game="coinflip">
+                        <div class="game-icon">🪙</div>
+                        <h3>Coin Flip</h3>
+                        <button class="btn-primary" data-page="coinflip">Play</button>
+                    </div>
+                    <div class="game-card" data-game="roulette">
+                        <div class="game-icon">🎡</div>
+                        <h3>Roulette</h3>
+                        <button class="btn-primary" data-page="roulette">Play</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mines Game -->
+            <div id="minesPage" class="page">
+                <div class="game-container">
+                    <h2>Mines</h2>
+                    <div class="bet-controls">
+                        <input type="number" id="minesBet" class="bet-input" placeholder="Bet Amount" value="10">
+                        <select id="minesCount" class="mines-select">
+                            <option value="1">1 Mine</option>
+                            <option value="3">3 Mines</option>
+                            <option value="5" selected>5 Mines</option>
+                            <option value="10">10 Mines</option>
+                        </select>
+                        <button class="btn-primary" id="minesStart">Start Game</button>
+                    </div>
+                    <div class="mines-multiplier">
+                        <span>Next Multiplier: <span id="minesMultiplier">1.00x</span></span>
+                    </div>
+                    <div id="minesGrid" class="mines-grid"></div>
+                    <button class="btn-success" id="minesCashout" disabled>Cashout</button>
+                </div>
+            </div>
+
+            <!-- Blackjack Game -->
+            <div id="blackjackPage" class="page">
+                <div class="game-container">
+                    <h2>Blackjack</h2>
+                    <div class="bet-controls">
+                        <input type="number" id="blackjackBet" class="bet-input" placeholder="Bet Amount" value="10">
+                        <button class="btn-primary" id="blackjackDeal">Deal</button>
+                    </div>
+                    <div class="blackjack-table">
+                        <div class="blackjack-hand">
+                            <h3>Dealer: <span id="dealerScore">0</span></h3>
+                            <div id="dealerCards" class="cards-container"></div>
+                        </div>
+                        <div class="blackjack-hand">
+                            <h3>Player: <span id="playerScore">0</span></h3>
+                            <div id="playerCards" class="cards-container"></div>
+                        </div>
+                    </div>
+                    <div class="blackjack-controls" id="blackjackControls">
+                        <button class="btn-primary" id="blackjackHit">Hit</button>
+                        <button class="btn-secondary" id="blackjackStand">Stand</button>
+                    </div>
+                    <div id="blackjackResult" class="game-result"></div>
+                </div>
+            </div>
+
+            <!-- Slots Game -->
+            <div id="slotsPage" class="page">
+                <div class="game-container">
+                    <h2>Slots</h2>
+                    <div class="bet-controls">
+                        <input type="number" id="slotsBet" class="bet-input" placeholder="Bet Amount" value="5">
+                        <button class="btn-primary" id="slotsSpin">Spin</button>
+                    </div>
+                    <div class="slots-machine">
+                        <div class="slots-reels">
+                            <div class="slots-reel" id="reel1">🍒</div>
+                            <div class="slots-reel" id="reel2">🍋</div>
+                            <div class="slots-reel" id="reel3">🍊</div>
+                        </div>
+                    </div>
+                    <div id="slotsResult" class="game-result"></div>
+                </div>
+            </div>
+
+            <!-- Dice Game -->
+            <div id="dicePage" class="page">
+                <div class="game-container">
+                    <h2>Dice</h2>
+                    <div class="bet-controls">
+                        <input type="number" id="diceBet" class="bet-input" placeholder="Bet Amount" value="10">
+                        <input type="number" id="diceTarget" class="bet-input" placeholder="Target (2-12)" value="7">
+                        <button class="btn-primary" id="diceRoll">Roll Dice</button>
+                    </div>
+                    <div class="dice-display">
+                        <div id="dice1" class="dice">🎲</div>
+                        <div id="dice2" class="dice">🎲</div>
+                    </div>
+                    <div id="diceResult" class="game-result"></div>
+                </div>
+            </div>
+
+            <!-- Coin Flip Game -->
+            <div id="coinflipPage" class="page">
+                <div class="game-container">
+                    <h2>Coin Flip</h2>
+                    <div class="bet-controls">
+                        <input type="number" id="coinflipBet" class="bet-input" placeholder="Bet Amount" value="10">
+                        <select id="coinflipChoice" class="mines-select">
+                            <option value="heads">Heads</option>
+                            <option value="tails">Tails</option>
+                        </select>
+                        <button class="btn-primary" id="coinflipStart">Flip Coin</button>
+                    </div>
+                    <div class="coinflip-display">
+                        <div id="coin" class="coin">🪙</div>
+                    </div>
+                    <div id="coinflipResult" class="game-result"></div>
+                </div>
+            </div>
+
+            <!-- Roulette Game -->
+            <div id="roulettePage" class="page">
+                <div class="game-container">
+                    <h2>Roulette</h2>
+                    <div class="bet-controls">
+                        <input type="number" id="rouletteBet" class="bet-input" placeholder="Bet Amount" value="10">
+                        <select id="rouletteChoice" class="mines-select">
+                            <option value="red">Red (2x)</option>
+                            <option value="black">Black (2x)</option>
+                            <option value="green">Green (14x)</option>
+                        </select>
+                        <button class="btn-primary" id="rouletteSpin">Spin</button>
+                    </div>
+                    <div class="roulette-display">
+                        <div id="rouletteWheel" class="roulette-wheel">🎡</div>
+                    </div>
+                    <div id="rouletteResult" class="game-result"></div>
+                </div>
+            </div>
+
+            <!-- Deposit Page -->
+            <div id="depositPage" class="page">
+                <div class="deposit-container">
+                    <h2>Deposit Funds</h2>
+                    <div class="deposit-form">
+                        <input type="number" id="depositAmount" class="bet-input" placeholder="Amount ($)">
+                        <input type="text" id="cardNumber" placeholder="Card Number (16 digits)">
+                        <input type="text" id="cardExpiry" placeholder="Expiry (MM/YY)">
+                        <input type="text" id="cardCvv" placeholder="CVV">
+                        <button class="btn-success" id="depositBtn">Deposit</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Page -->
+            <div id="adminPage" class="page">
+                <div class="admin-container">
+                    <h2>Admin Panel</h2>
+                    <div id="adminStats" class="admin-stats"></div>
+                    
+                    <div class="admin-tools">
+                        <h3>Quick Actions</h3>
+                        <div class="admin-action-form">
+                            <input type="text" id="adminTargetUser" placeholder="Username">
+                            <input type="number" id="adminAmount" placeholder="Amount (e.g. 100 or -50)">
+                            <button class="btn-primary" id="adminAdjustBalance">Adjust Balance</button>
+                            
+                            <input type="password" id="adminNewPassword" placeholder="New Password">
+                            <button class="btn-secondary" id="adminResetPassword">Reset Password</button>
+                        </div>
+                    </div>
+                    
+                    <h3>All Users</h3>
+                    <div id="usersList" class="users-list"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

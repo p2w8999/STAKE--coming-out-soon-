@@ -1,0 +1,54 @@
+{
+  "games": [
+    {
+      "id": "mines",
+      "name": "Mines",
+      "icon": "💣",
+      "description": "Click tiles and avoid mines!"
+    },
+    {
+      "id": "blackjack",
+      "name": "Blackjack",
+      "icon": "♠️",
+      "description": "Beat the dealer!"
+    },
+    {
+      "id": "slots",
+      "name": "Slots",
+      "icon": "🎰",
+      "description": "Spin and win big!"
+    },
+    {
+      "id": "dice",
+      "name": "Dice",
+      "icon": "🎲",
+      "description": "Roll the dice!"
+    },
+    {
+      "id": "coinflip",
+      "name": "Coin Flip",
+      "icon": "🪙",
+      "description": "Heads or Tails!"
+    },
+    {
+      "id": "roulette",
+      "name": "Roulette",
+      "icon": "🎡",
+      "description": "Spin the wheel!"
+    }
+  ],
+  "defaultUsers": {
+    "admin": {
+      "username": "admin",
+      "email": "admin@stake.com",
+      "password": "admin123",
+      "balance": 10000,
+      "isAdmin": true
+    }
+  },
+  "siteConfig": {
+    "name": "STAKE",
+    "defaultBalance": 100,
+    "currency": "$"
+  }
+}
